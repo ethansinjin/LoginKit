@@ -400,6 +400,7 @@
 				08FBBFB41DA3D8AB000D42B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		08FBBFB51DA3D8AB000D42B1 /* Build configuration list for PBXNativeTarget "LoginKitTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +409,7 @@
 				08FBBFB71DA3D8AB000D42B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
