@@ -10,6 +10,8 @@
 		08FBBFA81DA3D8AB000D42B1 /* LoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FBBF9E1DA3D8AB000D42B1 /* LoginKit.framework */; };
 		08FBBFAD1DA3D8AB000D42B1 /* LoginKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FBBFAC1DA3D8AB000D42B1 /* LoginKitTests.swift */; };
 		08FBBFAF1DA3D8AB000D42B1 /* LoginKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 08FBBFA11DA3D8AB000D42B1 /* LoginKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		08FBBFBC1DA3DF6C000D42B1 /* LoginKitRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FBBFBA1DA3DF6C000D42B1 /* LoginKitRootViewController.swift */; };
+		08FBBFBD1DA3DF6C000D42B1 /* LoginKitRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FBBFBB1DA3DF6C000D42B1 /* LoginKitRootViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		08FBBFA71DA3D8AB000D42B1 /* LoginKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08FBBFAC1DA3D8AB000D42B1 /* LoginKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginKitTests.swift; sourceTree = "<group>"; };
 		08FBBFAE1DA3D8AB000D42B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08FBBFBA1DA3DF6C000D42B1 /* LoginKitRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginKitRootViewController.swift; sourceTree = "<group>"; };
+		08FBBFBB1DA3DF6C000D42B1 /* LoginKitRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginKitRootViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			children = (
 				08FBBFA11DA3D8AB000D42B1 /* LoginKit.h */,
 				08FBBFA21DA3D8AB000D42B1 /* Info.plist */,
+				08FBBFBA1DA3DF6C000D42B1 /* LoginKitRootViewController.swift */,
+				08FBBFBB1DA3DF6C000D42B1 /* LoginKitRootViewController.xib */,
 			);
 			path = LoginKit;
 			sourceTree = "<group>";
@@ -149,6 +155,7 @@
 					08FBBF9D1DA3D8AB000D42B1 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = K2P452F89V;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					08FBBFA61DA3D8AB000D42B1 = {
@@ -181,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08FBBFBD1DA3DF6C000D42B1 /* LoginKitRootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08FBBFBC1DA3DF6C000D42B1 /* LoginKitRootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +331,7 @@
 		08FBBFB31DA3D8AB000D42B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = K2P452F89V;
@@ -334,6 +344,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ethansinjin.LoginKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -341,6 +352,7 @@
 		08FBBFB41DA3D8AB000D42B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = K2P452F89V;
@@ -360,6 +372,7 @@
 		08FBBFB61DA3D8AB000D42B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = K2P452F89V;
 				INFOPLIST_FILE = LoginKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -372,6 +385,7 @@
 		08FBBFB71DA3D8AB000D42B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = K2P452F89V;
 				INFOPLIST_FILE = LoginKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
