@@ -21,6 +21,7 @@ public class LoginKitRootViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginBackgroundView: LoginKitSlantedView!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var backgroundImage: UIImage?
     var logoImage: UIImage?
@@ -45,7 +46,9 @@ public class LoginKitRootViewController: UIViewController {
         logoImageView.image = logoImage
         loginBackgroundView.backgroundColor = buttonBackgroundColor
         loginButton.setTitleColor(buttonTextColor, for: .normal)
-        // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardShown(_:)), name: .UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardHidden(_:)), name: .UIKeyboardWillHide, object: nil)
     }
 
     public override func didReceiveMemoryWarning() {
@@ -65,6 +68,29 @@ public class LoginKitRootViewController: UIViewController {
         if let callback = callback {
             callback(username, password)
         }
+    }
+    
+    func keyboardShown(_ notification:NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size {
+                let insets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+                scrollView.contentInset = insets
+                scrollView.scrollIndicatorInsets = insets
+                
+                var frameRect = self.view.frame
+                frameRect.size.height -= keyboardSize.height
+                
+                if !frameRect.contains(passwordTextField.frame.origin) {
+                    scrollView.scrollRectToVisible(passwordTextField.frame, animated: true)
+                }
+            }
+        }
+    }
+    
+    func keyboardHidden(_ notification:NSNotification) {
+        let insets = UIEdgeInsets.zero
+        scrollView.contentInset = insets
+        scrollView.scrollIndicatorInsets = insets
     }
     
     public func indicateError(error: LoginKitErrorIndication) {
