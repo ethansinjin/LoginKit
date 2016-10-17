@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
   LoginKit allows you to stop stressing about handling user login in your iOS application.
-  Or at least it will, once it's built. Currently it's a work in progress
+  Or at least it will, once it's built. Currently it's a work in progress.
                    DESC
 
   s.homepage     = "https://github.com/ethansinjin/LoginKit"
