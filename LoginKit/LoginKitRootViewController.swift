@@ -17,24 +17,24 @@ public class LoginKitRootViewController: UIViewController {
 
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var usernameTextField: LoginKitTextField!
+    @IBOutlet weak var passwordTextField: LoginKitTextField!
     @IBOutlet weak var loginBackgroundView: LoginKitSlantedView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
     var backgroundImage: UIImage?
     var logoImage: UIImage?
-    var buttonBackgroundColor: UIColor?
+    var interfaceTintColor: UIColor?
     var buttonTextColor: UIColor?
     var buttonText: String?
     var callback: ((_ username:String, _ password:String) -> Void)?
     
-    public convenience init(backgroundImage: UIImage, logoImage: UIImage, buttonBackgroundColor: UIColor, buttonTextColor: UIColor, buttonText: String, callback: @escaping (_ username:String, _ password:String) -> Void) {
+    public convenience init(backgroundImage: UIImage, logoImage: UIImage, tintColor: UIColor, buttonTextColor: UIColor, buttonText: String, callback: @escaping (_ username:String, _ password:String) -> Void) {
         self.init(nibName: "LoginKitRootViewController", bundle: Bundle(for: type(of: self)))
         self.backgroundImage = backgroundImage
         self.logoImage = logoImage
-        self.buttonBackgroundColor = buttonBackgroundColor
+        self.interfaceTintColor = tintColor
         self.buttonTextColor = buttonTextColor
         self.buttonText = buttonText
         self.callback = callback
@@ -44,11 +44,39 @@ public class LoginKitRootViewController: UIViewController {
         super.viewDidLoad()
         backgroundImageView.image = backgroundImage
         logoImageView.image = logoImage
-        loginBackgroundView.backgroundColor = buttonBackgroundColor
+        loginBackgroundView.backgroundColor = interfaceTintColor
         loginButton.setTitleColor(buttonTextColor, for: .normal)
+        usernameTextField.tintColor = UIColor.white
+        passwordTextField.tintColor = UIColor.white
+        
+//        usernameTextField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
+//        passwordTextField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
+        usernameTextField.textColor = UIColor.white
+        passwordTextField.textColor = UIColor.white
+        
+        
+        let font = UIFont.systemFont(ofSize: 14.0)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.center
+        paragraphStyle.lineBreakMode = NSLineBreakMode.byTruncatingTail
+        
+        let attributes : [String: Any] = [
+            NSFontAttributeName : font,
+            NSParagraphStyleAttributeName : paragraphStyle,
+            NSForegroundColorAttributeName: UIColor.white
+        ]
+        
+        if let placeholder = usernameTextField.placeholder {
+            usernameTextField.attributedPlaceholder = NSAttributedString(string:placeholder, attributes: attributes)
+        }
+        if let placeholder = passwordTextField.placeholder {
+            passwordTextField.attributedPlaceholder = NSAttributedString(string:placeholder, attributes: attributes)
+        }
         
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardShown(_:)), name: .UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardHidden(_:)), name: .UIKeyboardWillHide, object: nil)
+        
+        
     }
 
     public override func didReceiveMemoryWarning() {
