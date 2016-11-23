@@ -54,8 +54,7 @@ public class LoginKitRootViewController: UIViewController {
         usernameTextField.textColor = UIColor.white
         passwordTextField.textColor = UIColor.white
         
-        
-        let font = UIFont.systemFont(ofSize: 14.0)
+        let font = UIFont.systemFont(ofSize: 16.0, weight:UIFontWeightThin)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.center
         paragraphStyle.lineBreakMode = NSLineBreakMode.byTruncatingTail
@@ -75,8 +74,7 @@ public class LoginKitRootViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardShown(_:)), name: .UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardHidden(_:)), name: .UIKeyboardWillHide, object: nil)
-        
-        
+
     }
 
     public override func didReceiveMemoryWarning() {
