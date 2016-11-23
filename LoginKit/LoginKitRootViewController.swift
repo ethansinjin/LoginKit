@@ -8,15 +8,14 @@
 
 import UIKit
 
-public enum LoginKitResult {
-    case success
-    case errorCredentials
-    case errorNetwork
-    case errorUnknown
+public enum LoginKitErrorIndication {
+    case credentials
+    case network
+    case unknown
 }
 
 public class LoginKitRootViewController: UIViewController {
-
+    
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var usernameTextField: LoginKitTextField!
@@ -30,9 +29,9 @@ public class LoginKitRootViewController: UIViewController {
     var interfaceTintColor: UIColor?
     var buttonTextColor: UIColor?
     var buttonText: String?
-    var callback: ((_ username:String, _ password:String) -> LoginKitResult)?
+    var callback: ((_ username:String, _ password:String, _ errorFunction:((LoginKitErrorIndication) -> Void)) -> Void)?
     
-    public convenience init(backgroundImage: UIImage, logoImage: UIImage, tintColor: UIColor, buttonTextColor: UIColor, buttonText: String, callback: @escaping (_ username:String, _ password:String) -> LoginKitResult) {
+    public convenience init(backgroundImage: UIImage, logoImage: UIImage, tintColor: UIColor, buttonTextColor: UIColor, buttonText: String, callback: @escaping (_ username:String, _ password:String, _ errorFunction:((LoginKitErrorIndication) -> Void)) -> Void) {
         self.init(nibName: "LoginKitRootViewController", bundle: Bundle(for: type(of: self)))
         self.backgroundImage = backgroundImage
         self.logoImage = logoImage
@@ -74,9 +73,9 @@ public class LoginKitRootViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardShown(_:)), name: .UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardHidden(_:)), name: .UIKeyboardWillHide, object: nil)
-
+        
     }
-
+    
     public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -87,13 +86,13 @@ public class LoginKitRootViewController: UIViewController {
         
         guard let username = usernameTextField.text,
             let password = passwordTextField.text else {
-            usernameTextField.shake()
-            passwordTextField.shake()
-            return
+                usernameTextField.shake()
+                passwordTextField.shake()
+                return
         }
         
         if let callback = callback {
-            handleResult(callback(username, password))
+            callback(username, password, indicateError)
         }
     }
     
@@ -120,31 +119,28 @@ public class LoginKitRootViewController: UIViewController {
         scrollView.scrollIndicatorInsets = insets
     }
     
-    public func handleResult(_ result: LoginKitResult) {
-        switch result {
-        case .errorCredentials:
+    public func indicateError(error: LoginKitErrorIndication) {
+        switch error {
+        case .credentials:
             usernameTextField.shake()
             passwordTextField.shake()
-        case .errorNetwork:
+        case .network:
             // TODO: show an error message
             break
-        case .errorUnknown:
+        case .unknown:
             break
             // TODO: show an error message
-        default:
-            // do nothing for successful result
-            break
         }
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

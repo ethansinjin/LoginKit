@@ -27,9 +27,8 @@ class ViewController: UIViewController {
             tintColor: #colorLiteral(red: 0.5948053598, green: 0.1391471922, blue: 0.164798677, alpha: 1),
             buttonTextColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
             buttonText: "Login") {
-            (username, password) in
+            (username, password, errorFunction) in
                 self.dismiss(animated: true, completion: nil)
-                return .success
             }
         self.present(loginViewController, animated: true, completion: nil)
     }
