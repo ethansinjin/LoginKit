@@ -29,9 +29,9 @@ public class LoginKitRootViewController: UIViewController {
     var interfaceTintColor: UIColor?
     var buttonTextColor: UIColor?
     var buttonText: String?
-    var callback: ((_ username:String, _ password:String, _ errorFunction:((LoginKitErrorIndication) -> Void)) -> Void)?
+    var callback: ((_ username:String, _ password:String, _ errorFunction: @escaping ((LoginKitErrorIndication) -> Void)) -> Void)?
     
-    public convenience init(backgroundImage: UIImage, logoImage: UIImage, tintColor: UIColor, buttonTextColor: UIColor, buttonText: String, callback: @escaping (_ username:String, _ password:String, _ errorFunction:((LoginKitErrorIndication) -> Void)) -> Void) {
+    public convenience init(backgroundImage: UIImage, logoImage: UIImage, tintColor: UIColor, buttonTextColor: UIColor, buttonText: String, callback: @escaping (_ username:String, _ password:String, _ errorFunction: @escaping ((LoginKitErrorIndication) -> Void)) -> Void) {
         self.init(nibName: "LoginKitRootViewController", bundle: Bundle(for: type(of: self)))
         self.backgroundImage = backgroundImage
         self.logoImage = logoImage
