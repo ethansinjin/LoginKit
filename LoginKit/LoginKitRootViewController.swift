@@ -9,8 +9,9 @@
 import UIKit
 
 public enum LoginKitErrorIndication {
-    case username
-    case password
+    case credentials
+    case network
+    case unknown
 }
 
 public class LoginKitRootViewController: UIViewController {
@@ -87,7 +88,8 @@ public class LoginKitRootViewController: UIViewController {
         
         guard let username = usernameTextField.text,
             let password = passwordTextField.text else {
-            // TODO: show an error message
+            usernameTextField.shake()
+            passwordTextField.shake()
             return
         }
         
@@ -121,12 +123,16 @@ public class LoginKitRootViewController: UIViewController {
     
     public func indicateError(error: LoginKitErrorIndication) {
         switch error {
-        case .username:
+        case .credentials:
             break
-            //turn username field red
-        default:
-            // turn password field red
+            usernameTextField.shake()
+            passwordTextField.shake()
+        case .network:
+            // TODO: show an error message
             break
+        case .unknown:
+            break
+            // TODO: show an error message
         }
     }
 

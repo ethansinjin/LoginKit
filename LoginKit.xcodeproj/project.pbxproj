@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		081643691DBF9968004E9CD6 /* LoginKitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081643681DBF9968004E9CD6 /* LoginKitTextField.swift */; };
+		0870352C1DE61C6B0092E90E /* UIView+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0870352B1DE61C6B0092E90E /* UIView+Shake.swift */; };
 		08DCBD4B1DB511C200168C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DCBD4A1DB511C200168C35 /* AppDelegate.swift */; };
 		08DCBD4D1DB511C200168C35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DCBD4C1DB511C200168C35 /* ViewController.swift */; };
 		08DCBD501DB511C200168C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08DCBD4E1DB511C200168C35 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		081643681DBF9968004E9CD6 /* LoginKitTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginKitTextField.swift; sourceTree = "<group>"; };
+		0870352B1DE61C6B0092E90E /* UIView+Shake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
 		08DCBD481DB511C200168C35 /* LoginKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08DCBD4A1DB511C200168C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08DCBD4C1DB511C200168C35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				08FBBFBB1DA3DF6C000D42B1 /* LoginKitRootViewController.xib */,
 				08DCBD761DB523A900168C35 /* LoginKitSlantedView.swift */,
 				081643681DBF9968004E9CD6 /* LoginKitTextField.swift */,
+				0870352B1DE61C6B0092E90E /* UIView+Shake.swift */,
 			);
 			path = LoginKit;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08DCBD771DB523A900168C35 /* LoginKitSlantedView.swift in Sources */,
+				0870352C1DE61C6B0092E90E /* UIView+Shake.swift in Sources */,
 				081643691DBF9968004E9CD6 /* LoginKitTextField.swift in Sources */,
 				08FBBFBC1DA3DF6C000D42B1 /* LoginKitRootViewController.swift in Sources */,
 			);

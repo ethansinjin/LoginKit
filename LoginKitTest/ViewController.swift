@@ -22,8 +22,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func button1Pressed(_ sender: AnyObject) {
-        let loginViewController = LoginKitRootViewController(backgroundImage: #imageLiteral(resourceName: "background"),
-            logoImage: #imageLiteral(resourceName: "background"),
+        let loginViewController = LoginKitRootViewController(backgroundImage: UIImage(),
+            logoImage: UIImage(),
             tintColor: #colorLiteral(red: 0.5948053598, green: 0.1391471922, blue: 0.164798677, alpha: 1),
             buttonTextColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
             buttonText: "Login") {
@@ -34,4 +34,3 @@ class ViewController: UIViewController {
     }
 
 }
-
