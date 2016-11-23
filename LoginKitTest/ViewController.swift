@@ -29,6 +29,7 @@ class ViewController: UIViewController {
             buttonText: "Login") {
             (username, password) in
                 self.dismiss(animated: true, completion: nil)
+                return .success
             }
         self.present(loginViewController, animated: true, completion: nil)
     }

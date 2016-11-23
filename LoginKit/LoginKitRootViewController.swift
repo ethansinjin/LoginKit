@@ -8,10 +8,11 @@
 
 import UIKit
 
-public enum LoginKitErrorIndication {
-    case credentials
-    case network
-    case unknown
+public enum LoginKitResult {
+    case success
+    case errorCredentials
+    case errorNetwork
+    case errorUnknown
 }
 
 public class LoginKitRootViewController: UIViewController {
@@ -29,9 +30,9 @@ public class LoginKitRootViewController: UIViewController {
     var interfaceTintColor: UIColor?
     var buttonTextColor: UIColor?
     var buttonText: String?
-    var callback: ((_ username:String, _ password:String) -> Void)?
+    var callback: ((_ username:String, _ password:String) -> LoginKitResult)?
     
-    public convenience init(backgroundImage: UIImage, logoImage: UIImage, tintColor: UIColor, buttonTextColor: UIColor, buttonText: String, callback: @escaping (_ username:String, _ password:String) -> Void) {
+    public convenience init(backgroundImage: UIImage, logoImage: UIImage, tintColor: UIColor, buttonTextColor: UIColor, buttonText: String, callback: @escaping (_ username:String, _ password:String) -> LoginKitResult) {
         self.init(nibName: "LoginKitRootViewController", bundle: Bundle(for: type(of: self)))
         self.backgroundImage = backgroundImage
         self.logoImage = logoImage
@@ -47,11 +48,9 @@ public class LoginKitRootViewController: UIViewController {
         logoImageView.image = logoImage
         loginBackgroundView.backgroundColor = interfaceTintColor
         loginButton.setTitleColor(buttonTextColor, for: .normal)
+        
         usernameTextField.tintColor = UIColor.white
         passwordTextField.tintColor = UIColor.white
-        
-//        usernameTextField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
-//        passwordTextField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
         usernameTextField.textColor = UIColor.white
         passwordTextField.textColor = UIColor.white
         
@@ -94,7 +93,7 @@ public class LoginKitRootViewController: UIViewController {
         }
         
         if let callback = callback {
-            callback(username, password)
+            handleResult(callback(username, password))
         }
     }
     
@@ -121,18 +120,20 @@ public class LoginKitRootViewController: UIViewController {
         scrollView.scrollIndicatorInsets = insets
     }
     
-    public func indicateError(error: LoginKitErrorIndication) {
-        switch error {
-        case .credentials:
-            break
+    public func handleResult(_ result: LoginKitResult) {
+        switch result {
+        case .errorCredentials:
             usernameTextField.shake()
             passwordTextField.shake()
-        case .network:
+        case .errorNetwork:
             // TODO: show an error message
             break
-        case .unknown:
+        case .errorUnknown:
             break
             // TODO: show an error message
+        default:
+            // do nothing for successful result
+            break
         }
     }
 
