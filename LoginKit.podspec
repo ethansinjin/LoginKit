@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "LoginKit"
-  s.version      = "0.1.1"
+  s.version      = "0.1.2"
   s.summary      = "A CocoaPod to facilitate app login on iOS"
 
   # This description is used to generate tags and improve search results.
